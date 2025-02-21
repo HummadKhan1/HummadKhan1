@@ -5,7 +5,7 @@
 
 - 🔭 I’m currently working on **a multiplayer Unity game**
 
-- 🌱 I’m currently learning **Unity Game Development, Network API's, and Player Input Handling**
+- 🌱 I’m currently learning **Python, Web Development, and ML/AI**
 
 - 👯 I’m open to collaborating on **Fullstack Web Development**
 
