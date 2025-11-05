@@ -3,6 +3,7 @@ class Solution:
         L, R = 0, 1
         res = 1
         prev = ""
+
         while R < len(arr):
             if arr[R] > arr[R-1] and prev != ">":
                 res = max(res, R-L+1)
