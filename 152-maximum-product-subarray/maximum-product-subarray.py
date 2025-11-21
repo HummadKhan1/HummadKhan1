@@ -6,7 +6,7 @@ class Solution:
         constraints: could be 0.
         '''
         curMax, curMin= 1, 1
-        res = max(nums)
+        res = nums[0]
         for n in nums:
             temp = curMax
             curMax = max(curMax*n, curMin*n, n)
