@@ -7,9 +7,7 @@
 
 - 🌱 I’m currently learning **Python, Web Development, and ML/AI**
 
-- 👯 I’m open to collaborating on **Fullstack Web Development**
-
-- 💬 Ask me about **React,**
+- 💬 Ask me about **My Current Project**
 
 - 📫 How to reach me **khanhummad@yahoo.com**
 
