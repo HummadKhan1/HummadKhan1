@@ -1,21 +1,20 @@
 class Solution:
     def numSubarrayProductLessThanK(self, nums: List[int], k: int) -> int:
         '''
-        parameters: arr of ints nums, int k.
-        return: number of subarray where product < k.
-        constraints: k could be 0.
+        parameters: arr of ints, int k.
+        return: number of subarrays where prod of elements < k.
+        Really asking: sliding window. res += (R-L+1)*2
+        constraints: Elements are positive
         '''
-        if k == 0:
-            return 0
         L = 0
-        total = 1
         res = 0
+        cur_sum = 1
         for R in range(len(nums)):
-            total *= nums[R]
-            while total >= k:
-                total //= nums[L]
+            cur_sum *= nums[R]
+            while cur_sum >= k:
+                cur_sum //= nums[L]
                 L += 1
                 if L > R:
                     break
-            res += (R-L+1)
+            res += R-L+1
         return res
