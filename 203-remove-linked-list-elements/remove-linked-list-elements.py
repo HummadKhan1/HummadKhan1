@@ -5,15 +5,10 @@
 #         self.next = next
 class Solution:
     def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
-        dummy = ListNode(next = head)
-        prev,cur = dummy, head
-
-        while cur:
-            next = cur.next
-            if cur.val == val:
-                prev.next = next
-            else:
-                prev = cur
-            cur = next
-        return dummy.next
-            
+        if not head:
+            return None
+        if head.val != val:
+            head.next = self.removeElements(head.next, val)
+            return head
+        
+        return self.removeElements(head.next, val)
