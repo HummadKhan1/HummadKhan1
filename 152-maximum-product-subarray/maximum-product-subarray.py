@@ -1,17 +1,18 @@
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
         '''
-        parameters: int arr nums
-        return: subarray with largest product
-        constraints: elements could be negative
-        reall asking: 
+        parameters: int arr nums.
+        return: product
+        Really asking: total, globMin, globMax
+        constraints:
+        edge cases: 
         '''
-        max_prod = nums[0]
-        min_prod = nums[0]
-        res = nums[0]
-        for i in range(1, len(nums)):
-            temp = max_prod
-            max_prod = max(max_prod*nums[i], min_prod*nums[i], nums[i])
-            min_prod = min(min_prod*nums[i], temp*nums[i], nums[i])
-            res = max(max_prod, res)
+        res = max(nums)
+        curMax = 1
+        curMin = 1
+        for n in nums:
+            tmp = curMax * n
+            curMax = max(n, curMax*n, curMin*n)
+            curMin = min(n, curMin*n, tmp)
+            res = max(curMax, res)
         return res
