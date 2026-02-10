@@ -1,26 +1,19 @@
 class Solution:
     def findMiddleIndex(self, nums: List[int]) -> int:
-        '''
-        parameters: int arr nums.
-        return: leftmost middleindex.
-        Actually means: 
-        edge cases: sum at i == len(nums) and i == 0 is 0.
-
-        prefix Sums
-        '''
-        maxLeft= []
+        max_left = []
         total = 0
         for n in nums:
-            maxLeft.append(total)
+            max_left.append(total)
             total += n
         
-        maxRight = [0]*len(nums)
+        print(max_left)
+        max_right = [0]*len(nums)
         total = 0
         for i in range(len(nums)-1,-1,-1):
-            maxRight[i] = total
+            max_right[i] = total
             total += nums[i]
-        
+        print(max_right)
         for i in range(len(nums)):
-            if maxLeft[i] == maxRight[i]:
+            if max_left[i] == max_right[i]:
                 return i
         return -1
