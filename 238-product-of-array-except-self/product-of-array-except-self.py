@@ -14,5 +14,6 @@ class Solution:
         
         res = []
         for i in range(len(nums)):
-            res.append(maxLeft[i]*maxRight[i])
+            product = maxLeft[i]*maxRight[i]
+            res.append(product)
         return res
