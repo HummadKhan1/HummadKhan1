@@ -1,20 +1,16 @@
-
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        s_dict = {}
+        count_dict = {}
         L = 0
-        res = 0
+        max_len = 0
         for R in range(len(s)):
-            s_dict[s[R]] = s_dict.get(s[R], 0)+1
-            while (R-L+1) - max(s_dict.values()) > k:
-                s_dict[s[L]] -= 1
-                if s_dict[s[L]] == 0:
-                    del s_dict[s[L]]
+            count_dict[s[R]] = count_dict.get(s[R], 0)+1
+            while (R-L+1)-max(count_dict.values()) > k:
+                count_dict[s[L]] -= 1
+                if count_dict[s[L]] == 0:
+                    del count_dict[s[L]]
                 L += 1
-            if (R-L+1) > res:
-                res = R-L+1
-        return res
 
+            max_len = max(max_len, R-L+1)
+        return max_len
 
-            
-        
