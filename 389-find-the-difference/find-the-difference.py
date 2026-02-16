@@ -4,10 +4,7 @@ class Solution:
         s_dict = Counter(s)
         t_dict = Counter(t)
 
-        
         diff = t_dict - s_dict
 
-        new_list = list(diff.keys())
-        return new_list[0]
 
-        
+        return ''.join(list(diff.keys()))
