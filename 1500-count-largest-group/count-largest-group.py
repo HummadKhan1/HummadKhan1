@@ -13,7 +13,6 @@ class Solution:
             str_n = str(i)
             for num in str_n:
                 total += int(num)
-            print(total)
             if total in group_dict:
                 group_dict[total].append(i)
             else:
