@@ -1,16 +1,10 @@
+from collections import Counter
 class Solution:
     def findDuplicates(self, nums: List[int]) -> List[int]:
-        '''
-        parameters: int arr nums.
-        return: arr.
-        Really asking: 
-        '''
-        dup_set = set()
+        dup_dict = Counter(nums)
+        unique = set(nums)
         res = []
-        for n in nums:
-            if n in dup_set:
-                if n not in res:
-                    res.append(n)
-            else:
-                dup_set.add(n)
+        for u in unique:
+            if dup_dict[u] > 1:
+                res.append(u)
         return res
