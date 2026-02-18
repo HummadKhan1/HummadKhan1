@@ -1,21 +1,16 @@
 class Solution:
     def maximumUniqueSubarray(self, nums: List[int]) -> int:
-        '''
-        parameters: arr of pos ints.
-        return: int score (sum of all elements in subarr)
-        Really asking: Sliding window problem
-        '''
-        nums_set = set()
-        max_sum = 0
-        cur_sum = 0
+        dup_set = set()
         L = 0
-
+        score = 0
+        max_score = 0
+        
         for R in range(len(nums)):
-            while nums[R] in nums_set:
-                nums_set.remove(nums[L])
-                cur_sum -= nums[L]
+            while nums[R] in dup_set:
+                score -= nums[L]
+                dup_set.remove(nums[L])
                 L += 1
-            nums_set.add(nums[R])
-            cur_sum += nums[R]
-            max_sum = max(max_sum, cur_sum)
-        return max_sum
+            dup_set.add(nums[R])
+            score += nums[R]
+            max_score = max(max_score, score)
+        return max_score
