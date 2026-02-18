@@ -1,17 +1,12 @@
 class Solution:
     def maximumNumberOfStringPairs(self, words: List[str]) -> int:
-        '''
-        parameters: arr words.
-        return: maximum number fo pairs.
-        Really asking: pair using hashmap.
-        '''
-        word_dict = {}
+        words_set = set()
         res = 0
+
         for s in words:
-            sorted_s = ''.join(sorted(s))
-            if sorted_s in word_dict:
+            if s[::-1] in words_set:
                 res += 1
-                del word_dict[sorted_s]
+                words_set.remove(s[::-1])
             else:
-                word_dict[sorted_s] = s
+                words_set.add(s)
         return res
