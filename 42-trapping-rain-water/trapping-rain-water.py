@@ -1,21 +1,25 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
+        '''
+        paramters: int arr height.
+        return: total amount of water that will stay.
+        Really asking: prefix sum problem where total amount of water that can be held in height[i] is = min(maxLeft[i], maxRight[i]) - height[i].
+        '''
         maxLeft = []
         maxHeight = 0
         for n in height:
             maxLeft.append(maxHeight)
             maxHeight = max(maxHeight, n)
+        
         maxRight = [0]*len(height)
         maxHeight = 0
         for i in range(len(height)-1,-1,-1):
             maxRight[i] = maxHeight
             maxHeight = max(maxHeight, height[i])
         
-        res = 0
+        total = 0
         for i in range(len(height)):
-            min_height = min(maxLeft[i], maxRight[i])
-            diff = min_height-height[i]
+            diff = min(maxLeft[i], maxRight[i]) - height[i]
             if diff > 0:
-                res += diff
-
-        return res
+                total += diff
+        return total
