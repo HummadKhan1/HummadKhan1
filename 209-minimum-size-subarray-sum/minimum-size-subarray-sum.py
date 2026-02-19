@@ -1,14 +1,15 @@
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         '''
-        Parameters: arr of pos ints nums, pos int target.
-        returns: min len of subarray where sum >= target. Or 0.
-        Really asking: sliding window. 
-        constraints: 
+        paramters: pos int arr nums, pos int target.
+        returns: MIN LEN of subarray whose sum >= target.
+        Really asking: Sliding Window.
+        Constraints: if no subarray return 0.
         '''
-        L = 0
         min_len = float("inf")
         cur_sum = 0
+        L = 0
+
         for R in range(len(nums)):
             cur_sum += nums[R]
             while cur_sum >= target:
