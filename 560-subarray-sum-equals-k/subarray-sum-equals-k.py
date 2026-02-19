@@ -1,19 +1,19 @@
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
         '''
-        parameters:int arr nums, int k.
-        return: total number of subarrays where the sum == k.
-        Really asking: 
-        constraints: elements can be negative.
+        parameters: arr of int nums.
+        return: total number of subarrays with sum of k.
+        Really asking: Use dict to keep track of sums in current index. If cur_sum - k is in dict then that is a valid subarray.
         '''
-        prefix_sums = {0:1}
-        prefix = 0
+        sum_dict = {0:1}
+        cur_sum = 0
         res = 0
         for n in nums:
-            prefix += n
-            diff = prefix - k
-            if diff in prefix_sums:
-                res += prefix_sums[diff]
-            prefix_sums[prefix] = prefix_sums.get(prefix, 0)+1
+            cur_sum += n
+            prefix = cur_sum - k
+
+            if prefix in sum_dict:
+                res += sum_dict.get(prefix)
             
+            sum_dict[cur_sum] = sum_dict.get(cur_sum, 0)+1
         return res
