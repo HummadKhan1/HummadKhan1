@@ -1,24 +1,23 @@
 class Solution:
     def numSubarrayProductLessThanK(self, nums: List[int], k: int) -> int:
         '''
-        parameters: int arr nums, int k.
-        return: NUMBER OF subarray.
-        Really asking: Sliding WIndow, res += R-L+1
-        constraints:
+        parameters: arr of ints nums, int k
+        returns: NUMBER OF contiguous subarrays where the product < k.
+        Really asking: prefix sum problem.
+        Constraints: cannot divide by 0.
         '''
         if k == 0:
             return 0
-        L = 0
+        
+        cur_prod = 1
         res = 0
-        curProd = 1
+        L = 0
+        
         for R in range(len(nums)):
-            curProd *= nums[R]
-            
-            while curProd >= k and L <= R:
-                curProd //= nums[L]
+            cur_prod *= nums[R]
+            while cur_prod >= k and L <= R:
+                cur_prod //= nums[L]
                 L += 1
-
-            if curProd < k:
-                res += R-L+1
-
+            
+            res += R-L+1
         return res
