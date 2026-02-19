@@ -2,8 +2,8 @@ class Solution:
     def waysToSplitArray(self, nums: List[int]) -> int:
         '''
         parameters: int arr nums.
-        returns: number of valid splits. Valid split is where maxLeft[i] >= maxRight[i]
-        constraints: At least one element to the right of i.
+        returns: NUMBER OF valid splits in nums.
+        Really asking: 
         '''
         maxLeft = []
         total = 0
