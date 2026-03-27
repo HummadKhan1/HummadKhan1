@@ -1,27 +1,25 @@
 from collections import Counter
 class Solution:
     def largestPalindromic(self, num: str) -> str:
-        '''
-        parameters: string num.
-        return: str largest palindromic integer.
-        Really asking: count_dict, sorted_unique, mid_found, new_str.
-        Constraints: no leading zeroes, return "0" if str and mid empty.
-        '''
-        count_dict = Counter(num)
-        sorted_unique = sorted(set(num), reverse=True)
+        count = Counter(num)
+        new_str = ""
+        mid = ""
         mid_found = False
-        mid = ''
-        new_string = ''
+        unique = set(num)
+        u_list = list(unique)
+        u_list.sort(reverse=True)
 
-        for u in sorted_unique:
-            if count_dict[u]%2 == 0:
-                new_string += u*(count_dict[u]//2)
+        for u in u_list:
+            value = count[u]
+            if count[u]%2 == 0:
+                new_str += u*((value)//2)
             else:
-                new_string += u*(count_dict[u]//2)
+                new_str += u*((value-1)//2)
                 if not mid_found:
-                    mid_found = True
                     mid = u
-        stripped_string = new_string.lstrip('0')
-        if not stripped_string and not mid:
+                    mid_found = True
+        new_str = new_str.lstrip("0")
+        if not new_str and not mid:
             return '0'
-        return stripped_string + mid + stripped_string[::-1]
+        res = new_str + mid + new_str[::-1]
+        return res
