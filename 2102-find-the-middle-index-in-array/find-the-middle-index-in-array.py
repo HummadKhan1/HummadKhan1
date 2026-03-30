@@ -13,6 +13,6 @@ class Solution:
             total += nums[i]
         
         for i in range(len(nums)):
-            if maxRight[i] == maxLeft[i]:
+            if maxLeft[i] == maxRight[i]:
                 return i
         return -1
