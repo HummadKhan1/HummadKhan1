@@ -15,7 +15,7 @@ class Solution:
                     group_dict[sum].append(i)
                 else:
                     group_dict[sum] = [i]
-            max_len = max(max_len, len(list(group_dict[sum])))
+            max_len = max(max_len, len(group_dict[sum]))
         group_list = list(group_dict.values())
         res = 0
         for l in group_list:
