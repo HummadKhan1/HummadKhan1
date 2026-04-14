@@ -6,6 +6,6 @@ class Solution:
 
         diff = t_count - s_count
 
-        res = list(diff.keys())
+        diff_list = list(diff.keys())
 
-        return res[0]
+        return diff_list[0]
