@@ -1,27 +1,25 @@
 class Solution:
     def countLargestGroup(self, n: int) -> int:
-        sum_dict = {}
-        max_num = 0
-        res = 0
+        group_dict = {}
+        max_len = 0
         for i in range(1, n+1):
-            str_n = str(i)
-            if len(str(n)) == 1:
-                sum_dict[i] = [i]
-                max_num = max(max_num, len(sum_dict[i]))
+            str_i = str(i)
+            if len(str_i) == 0:
+                sum = i
             else:
                 sum = 0
-                for c in str_n:
-                    sum += int(c)
-                if sum in sum_dict:
-                    sum_dict[sum].append(i)
-                    max_num = max(max_num, len(sum_dict[sum]))
+                for j in range(len(str_i)):
+                    sum += int(str_i[j])
+                
+                if sum in group_dict:
+                    group_dict[sum].append(i)
                 else:
-                    sum_dict[sum] = [i]
-
-        sum_list = list(sum_dict.values())
-        print(sum_list)
-        for group in sum_list:
-            if max_num == len(group):
+                    group_dict[sum] = [i]
+            max_len = max(max_len, len(list(group_dict[sum])))
+        group_list = list(group_dict.values())
+        res = 0
+        for l in group_list:
+            if len(l) == max_len:
                 res += 1
-        
+            
         return res
