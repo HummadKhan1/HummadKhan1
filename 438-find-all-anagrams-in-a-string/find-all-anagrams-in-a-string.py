@@ -15,9 +15,7 @@ class Solution:
 
         for R in range(len(s)):
             s_dict[s[R]] = s_dict.get(s[R], 0)+1
-            if R-L+1 < sum(p_dict.values()):
-                continue
-            while R-L+1 > sum(p_dict.values()):
+            while R-L+1 > len(p):
                 s_dict[s[L]] -= 1
                 if s_dict[s[L]] == 0:
                     del s_dict[s[L]]
