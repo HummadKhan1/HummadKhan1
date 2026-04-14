@@ -1,17 +1,24 @@
 from collections import Counter
 class Solution:
     def longestPalindrome(self, s: str) -> int:
-        count_dict = Counter(s)
+        '''
+        parameters: string s.
+        returns: LENGTH of longest palindrome.
+        Really asking: Use Counter. add if its an even number and add 1 mid.
+        Variables: count, max_len, mid, mid_found.
+        Constraints:
+        '''
+        count = Counter(s)
         unique = set(s)
-        res = 0
+        max_len = 0
         mid_found = False
-        for c in unique:
-            if count_dict[c]%2 == 0:
-                res += count_dict[c]
+
+        for u in unique:
+            if count[u]%2 == 0:
+                max_len += count[u]
             else:
+                max_len += (count[u])-1
                 if not mid_found:
-                    res += count_dict[c]
                     mid_found = True
-                else:
-                    res += count_dict[c]-1
-        return res
+                    max_len += 1
+        return max_len
